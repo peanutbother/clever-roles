@@ -8,8 +8,8 @@ on:
     types: [opened, synchronize]
     
 env:
-  RUSTFLAGS: '-Cinstrument-coverage -Zprofile -Cpanic=abort -Zpanic_abort_tests'
-  RUSTDOCFLAGS: '-Zprofile -Cpanic=abort -Zpanic_abort_tests'
+  RUSTFLAGS: '-Cinstrument-coverage -Cpanic=abort -Zpanic_abort_tests'
+  RUSTDOCFLAGS: '-Cpanic=abort -Zpanic_abort_tests'
 
 jobs:
   build:
