@@ -26,12 +26,12 @@ jobs:
           path: target
           key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
 
-      - uses: actions-rs/toolchain@v2
+      - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           override: true
 
-      - uses: actions-rs/cargo@v1.0.3
+      - uses: actions-rs/cargo@v1
         with:
           command: check
 
