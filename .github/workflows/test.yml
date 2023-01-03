@@ -34,15 +34,22 @@ jobs:
           toolchain: stable
           override: true
 
-      - uses: actions-rs/cargo@v1
+      - name: Build crate
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --all-features
+
+      - name: Test crate
+        uses: actions-rs/cargo@v1
         with:
           command: test
           args: --all-features --no-fail-fast
         
-      - name: rust-grcov
+      - name: Collect coverage
         uses: actions-rs/grcov@v0.1.6
         
-      - name: Codecov
+      - name: Publish coverage to Codecov
         uses: codecov/codecov-action@v3.1.1
         with:
           verbose: true
