@@ -37,3 +37,12 @@ jobs:
 
       - name: Run cargo tests
         run: cargo test
+        
+      - name: rust-grcov
+        uses: actions-rs/grcov@v0.1.6
+        
+      - name: Codecov
+        uses: codecov/codecov-action@v3.1.1
+        with:
+          verbose: true
+          fail_ci_if_error: true
