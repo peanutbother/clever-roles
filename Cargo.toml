@@ -7,7 +7,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-env_logger = "0.9.3"
+env_logger = "0.10.0"
 log = "0.4.17"
 poise = "0.5.0"
 tokio = { version = "1.22.0", features = ["tokio-macros", "rt-multi-thread"] }
