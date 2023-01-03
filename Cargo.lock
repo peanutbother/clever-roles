@@ -1275,9 +1275,9 @@ checksum = "6ac9a59f73473f1b8d852421e59e64809f025994837ef743615c6d0c5b305160"
 
 [[package]]
 name = "poise"
-version = "0.5.0"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dc82ff5958a3e68daa22595e2409bcccb5ae15a8bf4ef519292353cd6cf2d739"
+checksum = "2ca787e4e516076de1995a83ee05fbdfed71d072ea0da3df018318db42a87803"
 dependencies = [
  "async-trait",
  "derivative",
@@ -1294,9 +1294,9 @@ dependencies = [
 
 [[package]]
 name = "poise_macros"
-version = "0.5.0"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ab9247e74e4ed522567527ef8b2faff8e594663979038d7c6a559f336686d4f8"
+checksum = "b80c1f4e04114527f9d41ed6bb31707a095276f51bb0aef3ca11f062b25a67c4"
 dependencies = [
  "darling",
  "proc-macro2",
