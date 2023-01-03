@@ -6,6 +6,10 @@ on:
       - main
   pull_request:
     types: [opened, synchronize]
+    
+env:
+  RUSTFLAGS: '-Cinstrument-coverage -Zprofile -Cpanic=abort -Zpanic_abort_tests'
+  RUSTDOCFLAGS: '-Zprofile -Cpanic=abort -Zpanic_abort_tests'
 
 jobs:
   build:
@@ -33,10 +37,8 @@ jobs:
 
       - uses: actions-rs/cargo@v1
         with:
-          command: check
-
-      - name: Run cargo tests
-        run: cargo test
+          command: test
+          args: --all-features --no-fail-fast
         
       - name: rust-grcov
         uses: actions-rs/grcov@v0.1.6
