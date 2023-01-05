@@ -6,50 +6,24 @@ on:
       - main
   pull_request:
     types: [opened, synchronize]
-    
-env:
-  RUSTFLAGS: '-Cinstrument-coverage'
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on:                    ubuntu-latest
+    container:
+      image:                    xd009642/tarpaulin:develop-nightly
+      options:                  --security-opt seccomp=unconfined
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Cache cargo registry
-        uses: actions/cache@v3
-        with:
-          path: ~/.cargo/registry
-          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
-
-      - name: Cache cargo build
-        uses: actions/cache@v3
-        with:
-          path: target
-          key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
-
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
-
-      - name: Build crate
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --all-features
-
-      - name: Test crate
-        uses: actions-rs/cargo@v1
-        with:
-          command: test
-          args: --all-features --no-fail-fast
-        
       - name: Collect coverage
-        uses: peanutbother/rust-codecov@v1
-        
+        run: |
+          cargo +nightly tarpaulin --verbose --all-features --workspace --timeout 120 --out Xml
+
       - name: Publish coverage to Codecov
+        if: github.event_name != 'pull_request'
         uses: codecov/codecov-action@v3.1.1
         with:
           verbose: true
