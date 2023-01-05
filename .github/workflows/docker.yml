@@ -63,9 +63,11 @@ jobs:
           cache-to: type=gha,mode=max
 
       # Sync repo readme with docker
-      - uses: meeDamian/sync-readme@v1.0.6
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v3
         with:
-          pass: ${{ secrets.DOCKER_TOKEN }}
-          slug: ${{ env.IMAGE_NAME }}
-          description: true
-          readme: ./Readme.md
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+          repository: ${{ env.IMAGE_NAME }}
+          readme-filepath: ./Readme.md
+          short-description: ${{ github.event.repository.description }}
