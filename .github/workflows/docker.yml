@@ -68,3 +68,4 @@ jobs:
           pass: ${{ secrets.DOCKER_TOKEN }}
           slug: ${{ env.IMAGE_NAME }}
           description: true
+          readme: ./Readme.md
