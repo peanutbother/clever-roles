@@ -64,9 +64,9 @@ jobs:
           ARCHIVE_TYPES: ${{ matrix.archive }}
 
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
-          name: ${{ env.BINARY }}-${{ matrix.suffix }}.${{ matrix.archive }}
+          name: ${{ env.BINARY }}-${{ matrix.suffix }}
 
       - name: Upload Release Asset
         id: upload-release-asset
@@ -75,6 +75,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: ${{ env.BINARY }}-${{ matrix.suffix }}.${{ matrix.archive }}
+          asset_path: ${{steps.download.outputs.download-path}}/${{ env.BINARY }}-${{ matrix.suffix }}.${{ matrix.archive }}
           asset_name: ${{ env.BINARY }}-${{ matrix.suffix }}.${{ matrix.archive }}
           asset_content_type: application/octet-stream
