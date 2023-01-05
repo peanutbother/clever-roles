@@ -5,6 +5,9 @@ on:
     tags:
       - "v*"
 
+env:
+  BINARY: clever-roles
+
 jobs:
   release:
     name: Create Release
@@ -41,15 +44,20 @@ jobs:
             archive: tar.gz
     runs-on: ubuntu-latest
     steps:
-      - name: Clone test repository
-        uses: actions/checkout@v2
-      - uses: xhaiker/rust-release.action@v1.0.0
-        name: build ${{ matrix.name }}
+      - uses: actions/checkout@master
+      - name: Compile
+        id: compile
+        uses: rust-build/rust-build.action@v1.4.0
         with:
-          release: ${{ github.ref_name }}
-          rust_target: ${{ matrix.target }}
-          archive_suffix: ${{ matrix.suffix }}
-          archive_types: ${{ matrix.archive }}
-          extra_files: "Readme.md LICENSE"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUSTTARGET: ${{ matrix.target }}
+          UPLOAD_MODE: none
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.BINARY }}-${{ matrix.suffix }}
+          path: |
+            ${{ steps.compile.outputs.BUILT_ARCHIVE }}
+            ${{ steps.compile.outputs.BUILT_CHECKSUM }}
+            Readme.md
+            LICENSE
+          ARCHIVE_TYPES: ${{ matrix.archive }}
