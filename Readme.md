@@ -3,7 +3,7 @@
     <a href="https://hub.docker.com/r/bricksoft/clever-roles-dc" target="_blank">
       <img alt="Docker Hub Status" src="https://img.shields.io/docker/pulls/bricksoft/clever-roles-dc?logo=docker&style=flat-square"></a>
     <a href="https://github.com/peanutbother/clever-roles/releases/latest" target="_blank">
-      <img alt="Docker Hub Status" src="https://img.shields.io/github/v/release/bricksoft/clever-roles-dc?logo=github&style=flat-square"></a>
+      <img alt="Github Release" src="https://img.shields.io/github/v/release/peanutbother/clever-roles?logo=github&style=flat-square"></a>
     <a href="https://github.com/peanutbother/clever-roles/stargazers" target="_blank"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/peanutbother/clever-roles?logo=github&logoColor=white&style=flat-square"></a>
     <br />
     <a href="https://github.com/peanutbother/clever-roles/actions" target="_blank">
