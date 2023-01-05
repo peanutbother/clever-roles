@@ -47,7 +47,7 @@ jobs:
           args: --all-features --no-fail-fast
         
       - name: Collect coverage
-        uses: actions-rs/grcov@v0.1.6
+        uses: maboesanman/rust-codecov@v0
         
       - name: Publish coverage to Codecov
         uses: codecov/codecov-action@v3.1.1
