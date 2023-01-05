@@ -1,4 +1,4 @@
-name: Rust Test
+name: Test & Coverage
 
 on:
   push:
@@ -9,10 +9,10 @@ on:
 
 jobs:
   build:
-    runs-on:                    ubuntu-latest
+    runs-on: ubuntu-latest
     container:
-      image:                    xd009642/tarpaulin:develop-nightly
-      options:                  --security-opt seccomp=unconfined
+      image: xd009642/tarpaulin:develop-nightly
+      options: --security-opt seccomp=unconfined
 
     steps:
       - name: Checkout repository
