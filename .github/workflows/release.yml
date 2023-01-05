@@ -45,12 +45,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Compile
+      - name: Compile ${{ matrix.suffix }}
         id: compile
         uses: rust-build/rust-build.action@v1.4.0
         with:
           RUSTTARGET: ${{ matrix.target }}
           UPLOAD_MODE: none
+          TOOLCHAIN_VERSION: stable
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
