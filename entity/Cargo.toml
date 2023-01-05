@@ -6,4 +6,4 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-sea-orm = { version = "0.10.3", features = ["sqlx-sqlite", "runtime-tokio-rustls"] }
+sea-orm = { version = "0.10.6", features = ["sqlx-sqlite", "runtime-tokio-rustls"] }
