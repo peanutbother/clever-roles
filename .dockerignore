@@ -1,5 +1,6 @@
-/.git
-/data/*
-/migrations/target
-/target
 /.env
+/.git
+/.github
+/data
+/migration/target
+/target
