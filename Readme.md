@@ -42,8 +42,8 @@ This bot is running inside docker and assumes certain environment variables to b
 
 - TZ: defaults to `Etc/Utc`, a timezone to create proper timestamps in logs and some discord api
 - DATABASE_URL: defaults to `sqlite:/data/database.sqlite`, a `seaorm sqlite` compatible file url
-- RUST_LOG: optinal - overrided to `error,clever_roles=info` in production, allows you to set more verbose logging if needed
-- DISCORD_TOKEN: required, your discord api token
+- RUST_LOG: optional - overrided to `error,clever_roles=info` in production, allows you to set more verbose logging if needed
+- **DISCORD_TOKEN**: required, your discord api token
 
 To deploy the container either pull `bricksoft/clever-roles-dc` or build it locally by `docker build .` and then run it:
 > docker run -d -v PATH_TO_YOUR_DATA:/data -e DISCORD_TOKEN=YOUR_TOKEN_HERE bricksoft/clever-roles-dc:latest
